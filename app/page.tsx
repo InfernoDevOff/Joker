@@ -1,10 +1,12 @@
 'use client'
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FaUsers, FaServer, FaQuestionCircle, FaQuoteLeft, FaLightbulb } from 'react-icons/fa';
+import { FaUsers, FaServer, FaQuestionCircle, FaQuoteLeft, FaLightbulb, FaCaretDown } from 'react-icons/fa';
 
 export default function HomePage() {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
@@ -23,28 +25,72 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleDropdown = () => {
+    setDropdownOpen(prev => !prev);
+  };
+
   return (
     <main className="flex flex-col items-center justify-start min-h-screen text-white bg-gradient-to-br from-gray-800 to-black overflow-hidden">
       <nav className="fixed top-0 w-full bg-gray-900 bg-opacity-90 p-4 shadow-lg z-10">
-        <ul className="flex justify-center space-x-8">
-          {[
-            { name: 'Home', href: '/' },
-            { name: 'About Us', href: '/about' },
-            { name: 'Our Teams', href: '/teams' },
-            { name: 'Servers', href: '/servers' },
-            { name: 'Testimonials', href: '/testimonials' },
-            { name: 'Events', href: '/events' },
-            { name: 'FAQ', href: '/faq' },
-            { name: 'Simulations', href: '/simulations' },
-          ].map(({ name, href }) => (
-            <li key={name}>
-              <Link href={href} className="hover:underline transition">
-                {name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="flex justify-between items-center">
+          <div className="text-xl font-bold">Joker Club</div>
+          <div className="relative">
+            {/* Show dropdown button only on small screens */}
+            <button onClick={toggleDropdown} className="flex items-center focus:outline-none md:hidden">
+              <span>Menu</span>
+              <FaCaretDown className="ml-2" />
+            </button>
+
+            {/* Show dropdown menu only on mobile */}
+            {isDropdownOpen && (
+              <div className="absolute right-0 bg-gray-800 shadow-lg rounded-lg mt-2 p-4 z-20">
+                <div className="text-center text-yellow-300 font-semibold mb-2">
+                  Choose an option:
+                </div>
+                <ul>
+                  {[ 
+                    { name: 'Home', href: '/' },
+                    { name: 'About Us', href: '/about' },
+                    { name: 'Our Teams', href: '/teams' },
+                    { name: 'Servers', href: '/servers' },
+                    { name: 'Testimonials', href: '/testimonials' },
+                    { name: 'Events', href: '/events' },
+                    { name: 'FAQ', href: '/faq' },
+                    { name: 'Simulations', href: '/simulations' },
+                  ].map(({ name, href }) => (
+                    <li key={name} className="my-2">
+                      <Link href={href} className="hover:underline transition block">
+                        {name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Show menu items directly on larger screens */}
+            <div className="hidden md:flex space-x-4">
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'About Us', href: '/about' },
+                { name: 'Our Teams', href: '/teams' },
+                { name: 'Servers', href: '/servers' },
+                { name: 'Testimonials', href: '/testimonials' },
+                { name: 'Events', href: '/events' },
+                { name: 'FAQ', href: '/faq' },
+                { name: 'Simulations', href: '/simulations' },
+              ].map(({ name, href }) => (
+                <Link key={name} href={href} className="hover:underline">
+                  {name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
       </nav>
+
+      {/* Add a spacer div when dropdown is open */}
+      {isDropdownOpen && <div className="h-48" />} {/* Adjust height as needed */}
 
       <section id="home" className="text-center p-10 mt-20 bg-gradient-to-br from-gray-900 to-black rounded-lg shadow-lg">
         <div className="relative z-10">
@@ -66,6 +112,7 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-20 bg-no-repeat bg-cover" style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }} />
       </section>
 
+      {/* Other sections remain the same... */}
       <section id="aboutus" className="mt-16 w-full max-w-4xl p-8">
         <h2 className="text-4xl font-bold text-center">About Us</h2>
         <p className="mt-4 text-center">
@@ -117,51 +164,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="events" className="mt-16 w-full max-w-4xl p-8 bg-gray-900 rounded-lg">
-        <h2 className="text-5xl font-bold text-center">Upcoming Events</h2>
-        <ul className="mt-4 list-disc list-inside text-lg">
-          <li>🎮 Game Night - Every Friday at 7 PM</li>
-          <li>🎨 Art Contest - Last Saturday of the month</li>
-          <li>💬 Community Chat - Wednesdays at 6 PM</li>
-          <li>🎉 Monthly Hangout - First Saturday of each month</li>
-        </ul>
+      <section id="events" className="mt-16 w-full max-w-4xl p-8 bg-gray-800 rounded-lg">
+        <h2 className="text-4xl font-bold text-center">Upcoming Events</h2>
+        <div className="mt-4 text-center">
+          <p>Stay tuned for exciting events happening soon!</p>
+        </div>
       </section>
 
       <section id="faq" className="mt-16 w-full max-w-4xl p-8 bg-gray-800 rounded-lg">
         <h2 className="text-4xl font-bold text-center">Frequently Asked Questions</h2>
-        <div className="mt-4">
-          <h3 className="font-bold">Q: How do I join the server?</h3>
-          <p>A: Click on the &quot;Join Now&quot; button in the hero section, and you&apos;ll be redirected to our Discord server!</p>
-          <h3 className="font-bold mt-4">Q: Are there any membership fees?</h3>
-          <p>A: No, our community is completely free to join!</p>
+        <div className="mt-4 text-center">
+          <p>If you have any questions, feel free to reach out to us!</p>
         </div>
       </section>
 
-      <footer className="mt-16 p-8 bg-gray-900 text-gray-300">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold">About Joker Discord</h3>
-            <p className="text-sm">
-              We are a dedicated community of Joker fans, offering a fun, engaging, and supportive environment for people to meet, play games, and connect. Join us for exclusive events and a great community experience!
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="/" className="hover:underline">Home</a></li>
-              <li><a href="/about" className="hover:underline">About Us</a></li>
-              <li><a href="/teams" className="hover:underline">Our Teams</a></li>
-              <li><a href="/servers" className="hover:underline">Servers</a></li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold">Contact Us</h3>
-            <p className="text-sm">For any inquiries or support, please reach out to us at: <a href="mailto:support@jokerclub.com" className="hover:underline">support@jokerclub.com</a></p>
-          </div>
+      <section id="simulations" className="mt-16 w-full max-w-4xl p-8 bg-gray-800 rounded-lg">
+        <h2 className="text-4xl font-bold text-center">Simulations</h2>
+        <div className="mt-4 text-center">
+          <p>Explore our simulations for an engaging experience!</p>
         </div>
-        <p className="mt-8 text-center text-sm">© {new Date().getFullYear()} Joker Club. All rights reserved.</p>
+      </section>
+
+      <footer className="mt-16 p-4 text-center text-gray-400">
+        © 2024 Joker Club. All rights reserved.
       </footer>
     </main>
   );
