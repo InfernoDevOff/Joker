@@ -95,7 +95,7 @@ const EventsPage: React.FC = () => {
       <section className="mb-12 text-center max-w-3xl mt-24">
         <h2 className="text-5xl font-bold">Upcoming Events</h2>
         <p className="mt-4 text-lg text-gray-300">
-          Join us for exciting events and activities! Check out what's happening in our community:
+          Join us for exciting events and activities! Check out what&apos;s happening in our community:
         </p>
       </section>
 

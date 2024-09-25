@@ -1,6 +1,6 @@
 "use client"; // Add this line to specify that this component is a Client Component
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; 
 import { FaCaretDown } from 'react-icons/fa';
@@ -38,6 +38,8 @@ const TestimonialsPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Submitted:', newTestimonial);
+    // Optionally reset the form here if desired
+    setNewTestimonial({ name: '', message: '', rating: '5' });
   };
 
   const toggleDropdown = () => {
