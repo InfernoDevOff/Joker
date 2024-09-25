@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
 import Navbar from "./components/Navbar"; // Import the Navbar component
 
@@ -29,7 +30,10 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Navbar /> {/* Add the Navbar here */}
-          <main className="flex-1">{children}</main> {/* Ensure children take full height */}
+          <main className="flex-1">
+            {children}
+            <Analytics />
+          </main> {/* Ensure children take full height */}
         </div>
       </body>
     </html>
