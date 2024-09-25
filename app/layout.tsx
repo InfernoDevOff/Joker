@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import Navbar from "./components/Navbar"; // Import the Navbar component
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
             <Analytics />
+            <SpeedInsights />
           </main> {/* Ensure children take full height */}
         </div>
       </body>
