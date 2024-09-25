@@ -47,7 +47,7 @@ const ServersPage: React.FC = () => {
       </section>
 
       {/* Increased Spacing Under Header */}
-      <div className="mt-10 w-full max-w-6xl"> {/* Changed from mt-16 to mt-24 */}
+      <div className="mt-10 w-full max-w-6xl">
         {/* Servers List */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredServers.length > 0 ? (
@@ -85,12 +85,12 @@ const ServersPage: React.FC = () => {
           <p className="text-gray-300">
             <strong>1. How do I join a server?</strong>
             <br />
-            Click on the "Join" button for the server you want to join, and you'll be redirected to Discord.
+            Click on the &quot;Join&quot; button for the server you want to join, and you&apos;ll be redirected to Discord.
           </p>
           <p className="text-gray-300">
             <strong>2. What do I need to join?</strong>
             <br />
-            You'll need a Discord account. If you don't have one, you can create it for free.
+            You&apos;ll need a Discord account. If you don&apos;t have one, you can create it for free.
           </p>
         </div>
       </section>

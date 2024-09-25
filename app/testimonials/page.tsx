@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image'; // Import the Image component from Next.js
 
 const testimonialsData = [
   {
@@ -52,7 +53,13 @@ const TestimonialsPage: React.FC = () => {
         <div className="flex overflow-x-scroll space-x-4">
           {testimonialsData.map((testimonial, index) => (
             <div key={index} className="bg-gray-900 rounded-lg p-6 shadow-lg w-80 flex-shrink-0">
-              <img src={testimonial.photo} alt={testimonial.name} className="w-20 h-20 rounded-full mx-auto mb-4" />
+              <Image
+                src={testimonial.photo}
+                alt={testimonial.name}
+                width={80} // Set the width of the image
+                height={80} // Set the height of the image
+                className="rounded-full mx-auto mb-4" // Keep the existing classes
+              />
               <h3 className="text-xl font-semibold">{testimonial.name}</h3>
               <div className="flex items-center justify-center mb-2">
                 {Array.from({ length: testimonial.rating }).map((_, idx) => (

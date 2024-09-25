@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image'; // Importing the Image component from Next.js
+
 interface Member {
   name: string;
   image: string;
@@ -38,7 +40,7 @@ const categories: Category[] = [
     title: 'HANDLERS OF JOKER',
     members: [
       { name: 'Inferno', image: '/inferno.jpg' },
-      { name: 'Xelifer', image: '/xilefer.jpg ' },
+      { name: 'Xelifer', image: '/xilefer.jpg' },
       { name: 'Sourus', image: '/.jpg ' },
     ],
   },
@@ -64,10 +66,12 @@ const MemberCategory: React.FC = () => {
                 <div className="absolute inset-0 rounded-lg opacity-50 bg-yellow-500 blur-lg transition-opacity hover:opacity-75"></div>
 
                 {/* Member Image */}
-                <img
+                <Image
                   src={member.image}
                   alt={member.name}
-                  className="relative z-10 w-32 h-32 mb-4 object-cover border-4 border-yellow-500 rounded-lg"
+                  width={128} // Set the width of the image
+                  height={128} // Set the height of the image
+                  className="relative z-10 mb-4 object-cover border-4 border-yellow-500 rounded-lg"
                 />
                 {/* Member Name */}
                 <h3 className="relative z-10 text-xl font-bold text-white">{member.name}</h3>

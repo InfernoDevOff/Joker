@@ -1,14 +1,14 @@
 'use client'
 
 import { useEffect } from 'react';
-import Link from 'next/link'; // Import Link from next/link
+import Link from 'next/link';
 import { FaUsers, FaServer, FaQuestionCircle, FaQuoteLeft, FaLightbulb } from 'react-icons/fa';
 
 export default function HomePage() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
-      const scrollPosition = window.scrollY + window.innerHeight / 1.5; // Trigger animation earlier
+      const scrollPosition = window.scrollY + window.innerHeight / 1.5;
 
       sections.forEach(section => {
         if (section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
@@ -97,7 +97,7 @@ export default function HomePage() {
         <h2 className="text-4xl font-bold text-center">Why Join Us</h2>
         <div className="mt-4 text-center">
           <FaQuestionCircle className="inline-block text-6xl mb-2" />
-          <p>By joining our server, you'll gain access to exclusive events, a supportive community, and the opportunity to make lasting friendships!</p>
+          <p>By joining our server, you&apos;ll gain access to exclusive events, a supportive community, and the opportunity to make lasting friendships!</p>
         </div>
       </section>
 
@@ -106,12 +106,12 @@ export default function HomePage() {
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div className="p-4 bg-gray-800 rounded-lg">
             <FaQuoteLeft className="text-4xl text-gray-400 mb-2" />
-            <p>"This server has changed my life! The community is amazing!"</p>
+            <p>&quot;This server has changed my life! The community is amazing!&quot;</p>
             <span className="block text-right text-sm font-semibold">- Member Name</span>
           </div>
           <div className="p-4 bg-gray-800 rounded-lg">
             <FaQuoteLeft className="text-4xl text-gray-400 mb-2" />
-            <p>"I've met so many great friends and had a blast playing games!"</p>
+            <p>&quot;I&apos;ve met so many great friends and had a blast playing games!&quot;</p>
             <span className="block text-right text-sm font-semibold">- Another Member</span>
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function HomePage() {
         <h2 className="text-4xl font-bold text-center">Frequently Asked Questions</h2>
         <div className="mt-4">
           <h3 className="font-bold">Q: How do I join the server?</h3>
-          <p>A: Click on the "Join Now" button in the hero section, and you'll be redirected to our Discord server!</p>
+          <p>A: Click on the &quot;Join Now&quot; button in the hero section, and you&apos;ll be redirected to our Discord server!</p>
           <h3 className="font-bold mt-4">Q: Are there any membership fees?</h3>
           <p>A: No, our community is completely free to join!</p>
         </div>
@@ -139,7 +139,6 @@ export default function HomePage() {
 
       <footer className="mt-16 p-8 bg-gray-900 text-gray-300">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* About Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold">About Joker Discord</h3>
             <p className="text-sm">
@@ -147,7 +146,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Quick Links Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold">Quick Links</h3>
             <ul className="space-y-2">
@@ -155,39 +153,16 @@ export default function HomePage() {
               <li><a href="/about" className="hover:underline">About Us</a></li>
               <li><a href="/teams" className="hover:underline">Our Teams</a></li>
               <li><a href="/servers" className="hover:underline">Servers</a></li>
-              <li><a href="/testimonials" className="hover:underline">Testimonials</a></li>
-              <li><a href="/events" className="hover:underline">Events</a></li>
-              <li><a href="/faq" className="hover:underline">FAQ</a></li>
             </ul>
           </div>
 
-          {/* Contact Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold">Contact Us</h3>
-            <p className="text-sm">Have questions? Reach out to us on our Discord server!</p>
+            <p className="text-sm">For any inquiries or support, please reach out to us at: <a href="mailto:support@jokerclub.com" className="hover:underline">support@jokerclub.com</a></p>
           </div>
         </div>
-
-        <div className="mt-8 text-center text-sm">
-          &copy; 2024 Joker Discord Club. All rights reserved.
-        </div>
+        <p className="mt-8 text-center text-sm">© {new Date().getFullYear()} Joker Club. All rights reserved.</p>
       </footer>
-
-      <style jsx>{`
-        @keyframes backgroundAnimation {
-          0% { background-color: black; }
-          25% { background-color: darkblue; }
-          50% { background-color: white; }
-          75% { background-color: darkblue; }
-          100% { background-color: black; }
-        }
-        body {
-          animation: backgroundAnimation 15s infinite alternate;
-        }
-        section {
-          opacity: 1; /* Keep all sections visible */
-        }
-      `}</style>
     </main>
   );
 }

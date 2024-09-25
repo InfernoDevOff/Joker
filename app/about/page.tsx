@@ -16,15 +16,6 @@ const AboutPage: React.FC = () => {
         </div>
       </nav>
 
-      {/* Background Image */}
-      <div className="absolute inset-0 opacity-20 z-0">
-        <img
-          src="/path/to/your/background-image.jpg" // Replace with your background image
-          alt="Background"
-          className="object-cover w-full h-full"
-        />
-      </div>
-
       {/* About Us Content */}
       <div className="relative z-10 text-center p-8 bg-gray-900 bg-opacity-90 rounded-lg shadow-xl mt-20 max-w-4xl">
         <h2 className="text-5xl font-bold mb-6 animate-fade-in-up">About Us</h2>
