@@ -1,3 +1,5 @@
+"use client"; // Add this line to specify that this component is a Client Component
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; 
@@ -58,7 +60,7 @@ const TestimonialsPage: React.FC = () => {
                   Choose an option:
                 </div>
                 <ul>
-                  {[
+                  {[ 
                     { name: 'Home', href: '/' },
                     { name: 'About Us', href: '/about' },
                     { name: 'Our Teams', href: '/teams' },
@@ -79,7 +81,7 @@ const TestimonialsPage: React.FC = () => {
             )}
           </div>
           <div className="hidden md:flex space-x-4">
-            {[
+            {[ 
               { name: 'Home', href: '/' },
               { name: 'About Us', href: '/about' },
               { name: 'Our Teams', href: '/teams' },
